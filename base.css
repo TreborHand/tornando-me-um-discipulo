@@ -77,16 +77,16 @@ img{ display:block; max-width:100%; }
 
 /* frase de efeito abaixo do filete */
 .hook{
-  font-size:clamp(14px,1.9vw,32px);
-  line-height:1.45;
+  font-size:clamp(19px,3.2vw,56px);
+  line-height:1.28;
   font-weight:400;
-  color:rgba(246,238,227,.6);
-  max-width:34ch;
+  color:rgba(246,238,227,.72);
+  max-width:30ch;
 }
 .hook em{
   font-style:italic;
   color:var(--ember);
-  text-shadow:0 0 26px rgba(239,155,4,.4);
+  text-shadow:0 0 34px rgba(239,155,4,.45);
 }
 
 
