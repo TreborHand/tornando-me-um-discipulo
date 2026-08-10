@@ -219,6 +219,16 @@
     user-select:text;
   }
 
+  /* telas largas: listas em duas colunas para ocupar o espaço */
+  @media (min-width:1150px){
+    ul.pontos, ol.numerada{
+      max-width:100%;
+      column-count:2; column-gap:clamp(38px,3.8vw,78px);
+    }
+    ul.pontos li, ol.numerada li{ break-inside:avoid; }
+    .corpo{ max-width:52ch; }
+  }
+
   @media (max-width:900px){
     #trilho{ height:auto; overflow:visible; scroll-snap-type:none; }
     .cena{ min-height:auto; padding-top:calc(var(--pad) + 50px); padding-bottom:calc(var(--pad) + 30px); }
