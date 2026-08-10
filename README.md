@@ -1,17 +1,28 @@
 # Tornando-me um discípulo — ADSV
 
 Série de quatro estudos bíblicos. Assembleia de Deus Semeando em Vidas.
+Agosto de 2026 · segundas-feiras, às 20h.
 
-## Publicar no GitHub Pages
-
-1. Crie um repositório novo (ex.: `adsv-discipulo`) e envie estes arquivos para a raiz.
-2. No repositório: **Settings → Pages**.
-3. Em *Source*, escolha **Deploy from a branch**.
-4. Branch: `main` · pasta: `/ (root)` → **Save**.
-5. Em cerca de um minuto o endereço aparece na mesma tela:
-   `https://SEU-USUARIO.github.io/adsv-discipulo/`
+**No ar:** https://treborhand.github.io/tornando-me-um-discipulo/
 
 Esse é o link para mandar no grupo do WhatsApp.
+
+## Estrutura
+
+Todos os arquivos ficam na raiz do repositório:
+
+```
+index.html          hub — capa + navegação das quatro peças
+01-encontro.html    estudo do dia 10
+02-encontro.html    estudo do dia 17
+03-encontro.html    estudo do dia 24
+04-encontro.html    estudo do dia 31
+base.css            identidade visual compartilhada
+fogo.js             animação das brasas
+logo.png            marca da igreja
+```
+
+Mexer em `base.css` altera o visual de todas as páginas de uma vez.
 
 ## Liberar um encontro
 
@@ -27,23 +38,7 @@ Abra `index.html` e procure o bloco **PAINEL DE CONTROLE DA SÉRIE** (perto do f
 Peça travada **não** mostra o título — é isso que protege a surpresa da série.
 Peça liberada continua acessível para sempre.
 
-Depois de salvar, faça commit e push. O site atualiza sozinho em ~1 minuto.
-
-## Estrutura
-
-```
-index.html          hub — capa + navegação
-01-encontro.html    estudo do dia 10
-02-encontro.html    estudo do dia 17
-03-encontro.html    estudo do dia 24
-04-encontro.html    estudo do dia 31
-assets/
-  base.css          identidade visual compartilhada
-  fogo.js           animação das brasas
-  logo.png
-```
-
-Mexer em `assets/base.css` altera o visual das cinco páginas de uma vez.
+Depois de salvar, faça commit. O site atualiza sozinho em ~1 minuto.
 
 ## Frase escondida da série
 
@@ -53,11 +48,11 @@ A frase completa só se monta na última aula:
 > EU DEIXEI TUDO · E DESCOBRI · QUE NÃO PERDI · NADA
 
 | Semana | Fragmento na página |
-|---|---|
-| 10 | E DESCOBRI |
-| 17 | NADA |
-| 24 | QUE NÃO PERDI |
-| 31 | EU DEIXEI TUDO |
+| ------ | ------------------- |
+| 10     | E DESCOBRI          |
+| 17     | NADA                |
+| 24     | QUE NÃO PERDI       |
+| 31     | EU DEIXEI TUDO      |
 
 O fragmento fica no canto inferior direito da última tela de cada encontro,
 em tom bem próximo ao fundo (classe `.escondido`).
@@ -70,3 +65,8 @@ em tom bem próximo ao fundo (classe `.escondido`).
 
 As notas abrem em **outra janela**. Compartilhe a GUIA no Meet
 (não a tela inteira) e a janela de notas fica fora do compartilhamento.
+
+## Publicação
+
+O GitHub Pages já está ativo: **Settings → Pages**, source *Deploy from a branch*,
+branch `main`, pasta `/ (root)`. Cada commit republica o site em cerca de um minuto.
