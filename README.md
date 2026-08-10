@@ -12,7 +12,7 @@ Esse é o link para mandar no grupo do WhatsApp.
 Todos os arquivos ficam na raiz do repositório:
 
 ```
-index.html          hub — capa + navegação das quatro peças
+index.html          hub — capa + navegação das quatro aulas
 01-encontro.html    estudo do dia 10
 02-encontro.html    estudo do dia 17
 03-encontro.html    estudo do dia 24
@@ -29,14 +29,14 @@ Mexer em `base.css` altera o visual de todas as páginas de uma vez.
 Abra `index.html` e procure o bloco **PAINEL DE CONTROLE DA SÉRIE** (perto do fim).
 
 ```js
-{ peca:2, dia:'17', data:'17 de agosto', titulo:'', arquivo:'02-encontro.html', liberado:false }
+{ aula:2, dia:'17', data:'17 de agosto', titulo:'', arquivo:'02-encontro.html', liberado:false }
 ```
 
-- Troque `liberado: false` por `true` para acender a peça.
+- Troque `liberado: false` por `true` para acender a aula.
 - Preencha `titulo` com o nome do encontro.
 
-Peça travada **não** mostra o título — é isso que protege a surpresa da série.
-Peça liberada continua acessível para sempre.
+Aula travada **não** mostra o título — é isso que protege a surpresa da série.
+Aula liberada continua acessível para sempre.
 
 Depois de salvar, faça commit. O site atualiza sozinho em ~1 minuto.
 
@@ -62,7 +62,7 @@ Todas usam a classe `.escondido` — texto em tom quase igual ao fundo, no canto
 inferior direito da tela. Para plantar um fragmento novo, basta colocar
 `<span class="escondido">Palavra</span>` como filho direto de uma `<section class="cena">`.
 
-> Ao montar a Peça 2, anote nesta tabela onde você escondeu o fragmento.
+> Ao montar a Aula 2, anote nesta tabela onde você escondeu o fragmento.
 > É a única forma de lembrar depois.
 
 ## Teclas durante a apresentação
