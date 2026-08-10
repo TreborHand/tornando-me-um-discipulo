@@ -81,7 +81,7 @@
   }
   @keyframes desliza{ 0%,100%{opacity:.3;transform:translateY(-4px)} 50%{opacity:1;transform:translateY(4px)} }
 
-  /* ================= PEÇAS ================= */
+  /* ================= AULAS ================= */
   .pecas{
     position:relative;
     padding:clamp(60px,9vh,130px) var(--pad) clamp(50px,7vh,100px);
@@ -212,7 +212,7 @@
   </a>
 </header>
 
-<!-- ===================== PEÇAS ===================== -->
+<!-- ===================== AULAS ===================== -->
 <main class="pecas" id="pecas">
   <h2>São quatro segundas</h2>
   <p class="sub">
@@ -232,16 +232,16 @@
    PAINEL DE CONTROLE DA SÉRIE
 
    Para liberar um encontro: troque  liberado: false  por  true
-   Para dar nome à peça:     preencha o campo  titulo
+   Para dar nome à aula:     preencha o campo  titulo
 
-   Peça travada NÃO mostra o título — é o que protege a surpresa.
-   Peça já liberada continua aberta para sempre.
+   Aula travada NÃO mostra o título — é o que protege a surpresa.
+   Aula já liberada continua aberta para sempre.
    ═══════════════════════════════════════════════════════════ */
 const ENCONTROS = [
-  { peca:1, dia:'10', data:'10 de agosto', titulo:'Um convite a profundidade', arquivo:'01-encontro.html', liberado:true  },
-  { peca:2, dia:'17', data:'17 de agosto', titulo:'', arquivo:'02-encontro.html', liberado:false },
-  { peca:3, dia:'24', data:'24 de agosto', titulo:'', arquivo:'03-encontro.html', liberado:false },
-  { peca:4, dia:'31', data:'31 de agosto', titulo:'', arquivo:'04-encontro.html', liberado:false }
+  { aula:1, dia:'10', data:'10 de agosto', titulo:'Um convite a profundidade', arquivo:'01-encontro.html', liberado:true  },
+  { aula:2, dia:'17', data:'17 de agosto', titulo:'', arquivo:'02-encontro.html', liberado:false },
+  { aula:3, dia:'24', data:'24 de agosto', titulo:'', arquivo:'03-encontro.html', liberado:false },
+  { aula:4, dia:'31', data:'31 de agosto', titulo:'', arquivo:'04-encontro.html', liberado:false }
 ];
 
 /* ─────────── daqui para baixo não precisa mexer ─────────── */
@@ -271,7 +271,7 @@ const ENCONTROS = [
         '<div class="num">' + e.dia + '</div>' +
       '</div>' +
       '<div class="info">' +
-        '<div class="rotulo">Peça ' + e.peca + ' · ' + e.data + '</div>' +
+        '<div class="rotulo">Aula ' + e.aula + ' · ' + e.data + '</div>' +
         nome +
       '</div>' +
       (aberto ? '<div class="seta">→</div>' : '<div class="cadeado">✕</div>');
