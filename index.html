@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tornando-me um discípulo — ADSV</title>
+<meta name="description" content="Série de quatro estudos bíblicos. Assembleia de Deus Semeando em Vidas.">
+
+<!-- Prévia ao colar o link no WhatsApp -->
+<meta property="og:title" content="Tornando-me um discípulo">
+<meta property="og:description" content="Até que nada mais importe · Série em 4 encontros · ADSV">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E0904">
+
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+
+<style>
+  /* ================= CAPA ================= */
+  .capa{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column;
+    padding:var(--pad);
+    background:linear-gradient(168deg,#1A1108 0%,#0E0904 52%,#0B0703 100%);
+    overflow:hidden;
+  }
+  .capa::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(120% 100% at 26% 44%,rgba(11,7,3,.6) 0%,rgba(11,7,3,0) 58%);
+  }
+  .camada{ position:relative; z-index:2; }
+
+  .topo{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .marca{ display:flex; align-items:center; gap:clamp(10px,1.2vw,22px); }
+  .marca img{
+    width:clamp(44px,5vw,96px); height:auto; border-radius:50%;
+    box-shadow:0 0 0 1px rgba(217,170,116,.3),0 10px 34px -8px rgba(239,155,4,.65);
+  }
+  .marca span,.contador{
+    font-size:clamp(9px,1.15vw,19px);
+    letter-spacing:.26em; text-transform:uppercase; font-weight:500;
+  }
+  .marca span{ color:var(--sand); }
+  .contador{ color:rgba(217,170,116,.55); }
+
+  .centro{ flex:1; display:flex; flex-direction:column; justify-content:center;
+           padding:clamp(40px,6vh,90px) 0; }
+
+  .titulo{
+    font-family:var(--display); font-weight:800;
+    font-variation-settings:"wdth" 75;
+    font-size:clamp(46px,24vw,440px);
+    line-height:.8; letter-spacing:-.04em;
+    text-transform:uppercase; color:var(--bone);
+    white-space:nowrap; margin:clamp(6px,1vh,16px) 0 0 -.05em;
+    text-shadow:0 4px 90px rgba(239,155,4,.32);
+  }
+  @media (max-width:640px){ .titulo{ font-size:17vw; } }
+
+  .centro .eyebrow{ margin-bottom:clamp(10px,1.6vh,26px); }
+  .centro .rule{ margin:clamp(22px,3.4vh,52px) 0 clamp(14px,2vh,30px); }
+
+  .desce{
+    display:flex; align-items:center; gap:12px;
+    font-size:clamp(9px,1.15vw,19px);
+    letter-spacing:.26em; text-transform:uppercase;
+    color:rgba(217,170,116,.5); font-weight:500;
+  }
+  .desce i{
+    display:block; width:1px; height:clamp(24px,3vh,44px);
+    background:linear-gradient(180deg,var(--ember),transparent);
+    animation:desliza 2.4s ease-in-out infinite;
+  }
+  @keyframes desliza{ 0%,100%{opacity:.3;transform:translateY(-4px)} 50%{opacity:1;transform:translateY(4px)} }
+
+  /* ================= PEÇAS ================= */
+  .pecas{
+    position:relative;
+    padding:clamp(60px,9vh,130px) var(--pad) clamp(50px,7vh,100px);
+    background:linear-gradient(180deg,#0B0703 0%,#120C05 100%);
+    border-top:1px solid rgba(217,170,116,.14);
+  }
+  .pecas h2{
+    font-family:var(--display); font-weight:800;
+    font-variation-settings:"wdth" 82;
+    font-size:clamp(26px,4.4vw,72px); line-height:.95;
+    text-transform:uppercase; letter-spacing:-.02em;
+    color:var(--bone); margin-bottom:clamp(8px,1.2vh,16px);
+  }
+  .pecas .sub{
+    font-size:clamp(13px,1.35vw,22px); line-height:1.6;
+    color:rgba(246,238,227,.5); max-width:56ch;
+    margin-bottom:clamp(34px,5vh,68px);
+  }
+
+  .lista{ display:flex; flex-direction:column; gap:clamp(12px,1.6vh,20px); }
+
+  .peca{
+    position:relative; display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center; gap:clamp(16px,2.4vw,44px);
+    padding:clamp(18px,2.6vh,34px) clamp(18px,2.4vw,40px);
+    border:1px solid rgba(217,170,116,.14);
+    border-radius:14px;
+    background:linear-gradient(120deg,rgba(26,17,8,.85),rgba(14,9,4,.6));
+    transition:border-color .3s ease, transform .3s ease, background .3s ease;
+  }
+
+  /* liberada */
+  .peca.aberta{ cursor:pointer; }
+  .peca.aberta:hover{
+    border-color:rgba(239,155,4,.5);
+    transform:translateY(-3px);
+    background:linear-gradient(120deg,rgba(40,26,10,.9),rgba(18,12,5,.7));
+  }
+  .peca.aberta:hover .seta{ transform:translateX(6px); color:var(--ember); }
+  .peca.aberta:hover .num{ color:var(--bone); }
+
+  /* travada */
+  .peca.travada{ opacity:.45; cursor:default; }
+
+  .marcador{ display:flex; align-items:center; gap:clamp(12px,1.6vw,26px); }
+  .ponto{
+    width:clamp(10px,.9vw,15px); aspect-ratio:1; border-radius:50%;
+    background:var(--bark); box-shadow:inset 0 0 0 1px rgba(217,170,116,.3);
+    flex-shrink:0;
+  }
+  .peca.aberta .ponto{
+    background:var(--ember);
+    box-shadow:0 0 20px rgba(239,155,4,.9),0 0 48px rgba(239,155,4,.45);
+    animation:pulsa 2.8s ease-in-out infinite;
+  }
+  @keyframes pulsa{ 0%,100%{opacity:1} 50%{opacity:.58} }
+
+  .num{
+    font-family:var(--display); font-weight:800;
+    font-variation-settings:"wdth" 82;
+    font-size:clamp(30px,3.6vw,60px); line-height:1;
+    color:rgba(217,170,116,.4); transition:color .3s ease;
+  }
+  .peca.aberta .num{ color:var(--sand); text-shadow:0 0 32px rgba(239,155,4,.45); }
+
+  .info .rotulo{
+    font-size:clamp(9px,1vw,15px); letter-spacing:.26em;
+    text-transform:uppercase; color:rgba(217,170,116,.6);
+    font-weight:500; margin-bottom:6px;
+  }
+  .info .nome{
+    font-family:var(--display); font-weight:600;
+    font-variation-settings:"wdth" 88;
+    font-size:clamp(16px,2.1vw,34px); line-height:1.15;
+    color:var(--bone);
+  }
+  .info .nome.vazio{ color:rgba(246,238,227,.28); font-style:italic; }
+
+  .seta{
+    font-size:clamp(20px,2.2vw,34px); color:rgba(217,170,116,.4);
+    transition:transform .3s ease,color .3s ease;
+  }
+  .cadeado{ font-size:clamp(14px,1.5vw,22px); color:rgba(217,170,116,.35); }
+
+  /* ================= RODAPÉ ================= */
+  footer{
+    padding:clamp(30px,4vh,54px) var(--pad) clamp(40px,5vh,70px);
+    border-top:1px solid rgba(217,170,116,.1);
+    display:flex; justify-content:space-between; align-items:center;
+    gap:16px; flex-wrap:wrap;
+    font-size:clamp(10px,1.1vw,16px);
+    letter-spacing:.2em; text-transform:uppercase;
+    color:rgba(217,170,116,.4); font-weight:500;
+  }
+  footer b{ color:var(--sand); font-weight:600; }
+</style>
+</head>
+<body>
+
+<!-- ===================== CAPA ===================== -->
+<header class="capa">
+  <div class="fogo">
+    <div class="heat"><i></i><i></i><i></i><i></i></div>
+    <canvas></canvas>
+    <div class="brasa-glow"></div>
+  </div>
+  <div class="grao"></div>
+
+  <div class="camada topo">
+    <div class="marca">
+      <img src="assets/logo.png" alt="Logo ADSV">
+      <span>ADSV · Estudo bíblico</span>
+    </div>
+    <div class="contador">Série em 4 encontros</div>
+  </div>
+
+  <div class="camada centro">
+    <div class="eyebrow">Agosto · Segundas-feiras</div>
+    <div class="kicker">Tornando-me um</div>
+    <h1 class="titulo">Discípulo</h1>
+    <div class="rule"></div>
+    <div class="hook"><em>até que</em> nada mais importe</div>
+  </div>
+
+  <a class="camada desce" href="#pecas">
+    <i></i> As quatro peças
+  </a>
+</header>
+
+<!-- ===================== PEÇAS ===================== -->
+<main class="pecas" id="pecas">
+  <h2>As quatro peças</h2>
+  <p class="sub">
+    Cada segunda-feira entrega uma parte da mesma mensagem. Nenhuma se repete,
+    e nenhuma se explica sozinha. No fim, todas se encaixam.
+  </p>
+  <div class="lista" id="lista"></div>
+</main>
+
+<footer>
+  <div>Assembleia de Deus <b>Semeando em Vidas</b></div>
+  <div>Agosto de 2026</div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   PAINEL DE CONTROLE DA SÉRIE
+
+   Para liberar um encontro: troque  liberado: false  por  true
+   Para dar nome à peça:     preencha o campo  titulo
+
+   Peça travada NÃO mostra o título — é o que protege a surpresa.
+   Peça já liberada continua aberta para sempre.
+   ═══════════════════════════════════════════════════════════ */
+const ENCONTROS = [
+  { peca:1, dia:'10', data:'10 de agosto', titulo:'…um convite para ir mais fundo', arquivo:'01-encontro.html', liberado:true  },
+  { peca:2, dia:'17', data:'17 de agosto', titulo:'', arquivo:'02-encontro.html', liberado:false },
+  { peca:3, dia:'24', data:'24 de agosto', titulo:'', arquivo:'03-encontro.html', liberado:false },
+  { peca:4, dia:'31', data:'31 de agosto', titulo:'', arquivo:'04-encontro.html', liberado:false }
+];
+
+/* ─────────── daqui para baixo não precisa mexer ─────────── */
+(function(){
+  const lista = document.getElementById('lista');
+
+  ENCONTROS.forEach(function(e){
+    const aberto = e.liberado;
+    const el = document.createElement(aberto ? 'a' : 'div');
+    el.className = 'peca ' + (aberto ? 'aberta' : 'travada');
+
+    if (aberto){
+      el.href = e.arquivo;
+    } else {
+      el.setAttribute('aria-disabled', 'true');
+    }
+
+    const nome = aberto
+      ? (e.titulo
+          ? '<div class="nome">' + e.titulo + '</div>'
+          : '<div class="nome vazio">Título a definir</div>')
+      : '<div class="nome vazio">Ainda não revelada</div>';
+
+    el.innerHTML =
+      '<div class="marcador">' +
+        '<div class="ponto"></div>' +
+        '<div class="num">' + e.dia + '</div>' +
+      '</div>' +
+      '<div class="info">' +
+        '<div class="rotulo">Peça ' + e.peca + ' · ' + e.data + '</div>' +
+        nome +
+      '</div>' +
+      (aberto ? '<div class="seta">→</div>' : '<div class="cadeado">✕</div>');
+
+    lista.appendChild(el);
+  });
+})();
+</script>
+<script src="assets/fogo.js"></script>
+</body>
+</html>
