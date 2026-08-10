@@ -47,15 +47,23 @@ A frase completa só se monta na última aula:
 
 > EU DEIXEI TUDO · E DESCOBRI · QUE NÃO PERDI · NADA
 
-| Semana | Fragmento na página |
-| ------ | ------------------- |
-| 10     | E DESCOBRI          |
-| 17     | NADA                |
-| 24     | QUE NÃO PERDI       |
-| 31     | EU DEIXEI TUDO      |
+| Semana | Fragmento verdadeiro | Onde está        | Iscas na mesma página            |
+| ------ | -------------------- | ---------------- | -------------------------------- |
+| 10     | E DESCOBRI           | tela de Contexto | Ainda · Sozinho · Quase · Talvez |
+| 17     | NADA                 | a definir        | a definir                        |
+| 24     | QUE NÃO PERDI        | a definir        | a definir                        |
+| 31     | EU DEIXEI TUDO       | a definir        | a definir                        |
 
-O fragmento fica no canto inferior direito da última tela de cada encontro,
-em tom bem próximo ao fundo (classe `.escondido`).
+**Como funciona:** o fragmento verdadeiro nunca fica no mesmo lugar duas vezes,
+e vem acompanhado de palavras falsas espalhadas em outras telas do mesmo encontro.
+Quem for procurar vai achar cinco palavras e ter que decidir qual delas conta.
+
+Todas usam a classe `.escondido` — texto em tom quase igual ao fundo, no canto
+inferior direito da tela. Para plantar um fragmento novo, basta colocar
+`<span class="escondido">Palavra</span>` como filho direto de uma `<section class="cena">`.
+
+> Ao montar a Peça 2, anote nesta tabela onde você escondeu o fragmento.
+> É a única forma de lembrar depois.
 
 ## Teclas durante a apresentação
 
