@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peça 1 — …um convite para ir mais fundo</title>
+<title>Peça 1 — Um convite a profundidade</title>
 <meta name="theme-color" content="#0E0904">
-<meta property="og:title" content="Peça 1 — …um convite para ir mais fundo">
+<meta property="og:title" content="Peça 1 — Um convite a profundidade">
 <meta property="og:description" content="Tornando-me um discípulo · 10 de agosto · ADSV">
 <meta property="og:image" content="logo.png">
 <link rel="icon" href="logo.png">
@@ -135,6 +135,16 @@
   }
   .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
+  /* rede de pesca decorativa */
+  .rede{
+    position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.55;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(217,170,116,.10) 0 1px,transparent 1px 48px),
+      repeating-linear-gradient(-45deg,rgba(217,170,116,.10) 0 1px,transparent 1px 48px);
+    -webkit-mask-image:radial-gradient(115% 85% at 80% 50%,#000 0%,rgba(0,0,0,0) 66%);
+            mask-image:radial-gradient(115% 85% at 80% 50%,#000 0%,rgba(0,0,0,0) 66%);
+  }
+
   /* ---------- barra de progresso e navegação ---------- */
   #barra{
     position:fixed; top:0; left:0; height:3px; width:0%;
@@ -187,11 +197,11 @@
     <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
     <div class="grao"></div>
     <div class="interna">
-      <div class="marcador">Peça <b>1</b> · 10 de agosto</div>
-      <div class="kicker">Tornando-me um</div>
-      <div class="gigante">Fundo</div>
+      <div class="marcador">Tornando-me um discípulo · Peça <b>1</b> · 10 de agosto</div>
+      <div class="kicker">Um convite a</div>
+      <div class="gigante" style="font-size:clamp(30px,12.4vw,238px)">Profundidade</div>
       <div class="rule" style="margin:clamp(20px,3vh,40px) 0 clamp(14px,2vh,26px)"></div>
-      <div class="hook">…um convite para ir mais fundo</div>
+      <div class="hook">O convite está feito, você vem?</div>
     </div>
   </section>
 
@@ -205,6 +215,7 @@
         restando apenas a palavra de quem o chamou.
       </p>
     </div>
+    <span class="escondido">Ainda</span>
   </section>
 
   <!-- 3 · TEXTO -->
@@ -220,14 +231,20 @@
 
   <!-- 4 · CONTEXTO -->
   <section class="cena" data-nota="Contexto rápido. Não alongar — o peso da noite está nos tópicos.">
+    <div class="rede" aria-hidden="true"></div>
+    <div class="grao"></div>
     <div class="interna">
       <div class="marcador">Contexto</div>
       <ul class="pontos">
         <li>Lago de <b>Genesaré</b> — o mesmo mar da Galileia, cercado de vilarejos que viviam da pesca.</li>
         <li>Na Galileia, pescava-se <b>à noite</b>, e não de manhã.</li>
+        <li>Simão não estava sozinho: Tiago e João eram <b>sócios</b> dele. O chamado alcança um time inteiro, e não um homem só.</li>
+        <li>O povo se apertava para ouvir. Jesus precisa de um púlpito e escolhe <b>o barco de um homem cansado</b>.</li>
+        <li>No v. 5 Pedro chama Jesus de <b>Mestre</b>. Depois da pesca, no v. 8, já chama de <b>Senhor</b>.</li>
         <li>Logo depois deste episódio, Lucas narra a cura do leproso, a do paralítico e o chamado de Levi. Uma sequência de chamados — e este é o primeiro.</li>
       </ul>
     </div>
+    <span class="escondido">E descobri</span>
   </section>
 
   <!-- 5 · TÓPICO 1 -->
@@ -279,6 +296,7 @@
       </ul>
       <span class="ref">Lucas 5.4</span>
     </div>
+    <span class="escondido">Sozinho</span>
   </section>
 
   <!-- 8 · RESPIRO -->
@@ -319,41 +337,30 @@
     </div>
   </section>
 
-  <!-- 11 · APLICAÇÕES -->
-  <section class="cena" data-nota="Aplicações. Se o tempo apertar, ficar só com a primeira.">
+  <!-- 11 · CONVERSAR E APLICAR -->
+  <section class="cena" data-nota="Abrir os microfones. Cada item é pergunta e tarefa: deixe responderem antes de ler a parte em destaque.">
     <div class="interna">
-      <div class="marcador">Aplicações</div>
+      <div class="marcador">Para conversar <b>e</b> levar para a semana</div>
       <ol class="numerada">
-        <li>Identificar um lugar onde a sua experiência já concluiu que não adianta — e nomeá-lo por escrito nesta semana.</li>
-        <li>Antes de decidir algo importante nos próximos sete dias, perguntar primeiro o que a Escritura diz.</li>
-        <li>Cuidar bem de uma tarefa pequena e sem plateia — a rede lavada depois da noite sem peixe.</li>
+        <li>Por que aqueles homens estavam lavando as redes depois de uma noite inteira sem pegar nada? <b>Cuide bem, esta semana, de uma tarefa pequena e sem plateia.</b></li>
+        <li>Qual foi a última vez que você obedeceu a algo sem entender? <b>Antes da próxima decisão importante, pergunte primeiro o que a Escritura diz.</b></li>
+        <li>Se a experiência deixa de ser o critério, o que sobra para decidir? <b>Escreva o nome de um lugar onde a sua experiência já concluiu que não adianta.</b></li>
+        <li>Pedro tinha toda a razão técnica para dizer não. Por que você acha que ele lançou a rede mesmo assim? <b>Lance a sua uma vez, nesta semana.</b></li>
       </ol>
     </div>
-  </section>
-
-  <!-- 12 · PERGUNTAS -->
-  <section class="cena" data-nota="Abrir os microfones. Não responder por eles.">
-    <div class="interna">
-      <div class="marcador">Para conversar</div>
-      <ol class="numerada">
-        <li>Por que aqueles homens estavam lavando as redes depois de uma noite inteira sem pegar nada?</li>
-        <li>Qual foi a última vez que você obedeceu a algo sem entender? O que aconteceu?</li>
-        <li>Se a experiência deixa de ser o critério, o que sobra para decidir?</li>
-        <li>Pedro tinha toda a razão técnica para dizer não. Por que você acha que ele lançou a rede mesmo assim?</li>
-      </ol>
-    </div>
+    <span class="escondido">Quase</span>
   </section>
 
   <!-- 13 · DESAFIO -->
-  <section class="cena" data-nota="O desafio é o que mantém a peça viva até o dia 17. Pedir que anotem.">
+  <section class="cena respiro" data-nota="O desafio é o que mantém a peça viva até o dia 17. Pedir que anotem.">
     <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
     <div class="interna">
       <div class="marcador">Desafio da semana</div>
-      <div class="caixa">
-        <p class="frase" style="font-size:clamp(19px,2.9vw,46px);max-width:24ch">
+      <div class="caixa" style="margin:0 auto">
+        <p class="frase" style="font-size:clamp(19px,2.9vw,46px);max-width:24ch;margin:0 auto">
           Lance a rede uma vez, onde a sua experiência já disse não.
         </p>
-        <p class="corpo" style="margin-top:clamp(18px,2.4vh,32px)">
+        <p class="corpo" style="margin:clamp(18px,2.4vh,32px) auto 0">
           Pode ser a conversa que você já desistiu de ter, a pessoa por quem você parou de orar,
           a matéria que você já decidiu que não entra na sua cabeça. Escolha uma, faça uma vez,
           e anote o que aconteceu para contar no dia 17.
@@ -381,6 +388,7 @@
   <section class="cena respiro" data-nota="Ler o v.11, descrever a cena da praia, fazer a pergunta e ENCERRAR. Não responder.">
     <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
+      <div class="marcador">A pergunta que não quer calar</div>
       <p class="texto" style="font-size:clamp(20px,3.2vw,52px)">
         Eles, então, arrastaram os seus barcos para a praia, deixaram tudo e o seguiram.
       </p>
@@ -392,7 +400,7 @@
         Segunda que vem, dia 17.
       </p>
     </div>
-    <span class="escondido">E descobri</span>
+    <span class="escondido">Talvez</span>
   </section>
 
 </div>
