@@ -135,6 +135,28 @@
   }
   .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
+  /* versículos de apoio no rodapé da tela */
+  .versos-pe{
+    position:absolute; left:var(--pad); right:var(--pad);
+    bottom:calc(var(--pad) + 4px); z-index:3;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:clamp(18px,3.2vw,58px);
+    text-align:left;
+  }
+  .versos-pe p{
+    max-width:42ch; margin:0;
+    font-size:clamp(11px,1.02vw,17px); line-height:1.5;
+    color:rgba(246,238,227,.5);
+  }
+  .versos-pe span{
+    display:block; margin-top:.45em;
+    font-size:.85em; letter-spacing:.2em; text-transform:uppercase;
+    color:rgba(217,170,116,.62); font-weight:600;
+  }
+  @media (max-width:900px){
+    .versos-pe{ position:static; margin-top:clamp(30px,4vh,52px); }
+  }
+
   /* passagem bíblica em duas colunas */
   .passagem{
     column-count:2; column-gap:clamp(26px,3.4vw,64px);
@@ -283,11 +305,15 @@
   </section>
 
   <!-- 5 · TÓPICO 1 -->
-  <section class="cena" data-nota="Tópico 1. A pergunta das redes lavadas é o gancho — deixar no ar alguns segundos antes de responder.">
+  <section class="cena respiro" data-nota="Tópico 1. A pergunta das redes lavadas é o gancho — deixar no ar alguns segundos antes de responder. Os dois versículos do rodapé são a base: ler só se alguém perguntar de onde vem isso.">
     <div class="fogo"><div class="heat"><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <div class="marcador">Tópico <b>1</b> · Lucas 5.2-3</div>
-      <p class="frase">O dia de frustração não pode determinar uma vida de desleixo.</p>
+      <p class="frase" style="font-size:clamp(27px,4.9vw,86px);max-width:17ch;margin:0 auto">O dia de frustração não pode determinar uma vida de desleixo.</p>
+    </div>
+    <div class="versos-pe">
+      <p>Assim, quer vocês comam, quer bebam, quer façam qualquer outra coisa, façam tudo para a glória de Deus.<span>1 Coríntios 10.31 · NVI</span></p>
+      <p>Tudo o que fizerem, façam de todo o coração, como para o Senhor, não para os homens, sabendo que receberão do Senhor a recompensa da herança, pois é a Cristo, o Senhor, a quem vocês servem.<span>Colossenses 3.23-24 · NVI</span></p>
     </div>
   </section>
 
