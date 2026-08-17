@@ -201,11 +201,60 @@ ol.numerada li::before{
 /* fragmento escondido */
 .escondido{
   font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
-  font-size:clamp(14px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
-  color:rgba(217,170,116,.11);
+  font-size:clamp(15px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(217,170,116,.20);
   position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
   user-select:text;
 }
+/* 90% assiste por celular: um pouco mais de presença em tela pequena */
+@media (max-width:900px){
+  .escondido{ font-size:16px; color:rgba(217,170,116,.26); }
+}
+
+/* ---------- pergunta em destaque (título grande do bloco) ---------- */
+.pergunta{
+  font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
+  font-size:clamp(28px,4.6vw,80px); line-height:1.08; letter-spacing:-.02em;
+  text-transform:none; color:var(--bone);
+  margin-bottom:clamp(20px,2.8vh,40px);
+  text-shadow:0 0 40px rgba(239,155,4,.18);
+}
+
+/* ---------- frase de impacto: centralizada na tela ---------- */
+.cena.impacto{ text-align:center; align-items:center; }
+.cena.impacto .interna{ max-width:1000px; }
+.cena.impacto .frase{ max-width:22ch; margin-left:auto; margin-right:auto; }
+.cena.impacto .marcador{ margin-bottom:clamp(18px,2.6vh,36px); }
+
+/* ---------- centralização pontual ---------- */
+.cena.centro{ text-align:center; align-items:center; }
+.cena.centro .interna{ max-width:1000px; }
+.cena.centro .frase,
+.cena.centro .corpo{ margin-left:auto; margin-right:auto; }
+.cena.centro .video{ margin-left:auto; margin-right:auto; }
+
+/* ---------- revelação progressiva (setas ← →) ----------
+   Só entra em ação quando o JS marca o body. Sem JS, ou no
+   celular, tudo aparece normalmente. */
+body.revelacao .revelar{
+  opacity:0; transform:translateY(12px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+body.revelacao .revelar.visivel{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  body.revelacao .revelar{ transform:none; transition:opacity .25s ease; }
+}
+
+/* ---------- numeração dos blocos ---------- */
+#bloco{
+  position:fixed; bottom:14px; left:16px; z-index:50;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(217,170,116,.38); font-weight:600;
+  background:rgba(11,7,3,.55); padding:6px 12px; border-radius:999px;
+  border:1px solid rgba(217,170,116,.13); backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+#bloco b{ color:var(--ember); font-weight:800; }
 
 /* telas largas: listas em duas colunas para ocupar o espaço */
 @media (min-width:1150px){
