@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peça 1 — …um convite para ir mais fundo</title>
+<title>Aula 1 — Um convite a profundidade</title>
 <meta name="theme-color" content="#0E0904">
-<meta property="og:title" content="Peça 1 — …um convite para ir mais fundo">
+<meta property="og:title" content="Aula 1 — Um convite a profundidade">
 <meta property="og:description" content="Tornando-me um discípulo · 10 de agosto · ADSV">
 <meta property="og:image" content="logo.png">
 <link rel="icon" href="logo.png">
@@ -14,7 +14,227 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
 
-<link rel="stylesheet" href="encontro.css">
+<style>
+  body{ background:#0B0703; }
+
+  /* ---------- trilho de seções ---------- */
+  #trilho{ height:100svh; overflow-y:auto; scroll-snap-type:y mandatory; }
+
+  .cena{
+    position:relative; scroll-snap-align:start;
+    min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+    padding:calc(var(--pad) + 30px) var(--pad) calc(var(--pad) + 46px);
+    background:linear-gradient(168deg,#150E06 0%,#0B0703 60%,#0E0904 100%);
+    border-bottom:1px solid rgba(217,170,116,.07);
+    overflow:hidden;
+  }
+  .cena > *{ position:relative; z-index:2; }
+  .cena .fogo,.cena .grao,.cena .brasa-glow{ z-index:0; }
+  .cena::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(120% 100% at 28% 46%,rgba(11,7,3,.62) 0%,rgba(11,7,3,0) 60%);
+  }
+
+  .interna{ width:100%; max-width:1180px; margin:0 auto; }
+
+  /* ---------- tipos de cena ---------- */
+  .marcador{
+    font-size:clamp(10px,1.14vw,18px); letter-spacing:.26em; text-transform:uppercase;
+    color:rgba(217,170,116,.55); font-weight:500; margin-bottom:clamp(14px,2vh,28px);
+  }
+  .marcador b{ color:var(--ember); font-weight:600; }
+
+  .gigante{
+    font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 75;
+    font-size:clamp(46px,24vw,420px); line-height:.8; letter-spacing:-.04em;
+    text-transform:uppercase; color:var(--bone); white-space:nowrap;
+    margin-left:-.05em; text-shadow:0 4px 90px rgba(239,155,4,.3);
+  }
+  @media (max-width:700px){ .gigante{ font-size:18vw; } }
+
+  h2.cabeca{
+    font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 80;
+    font-size:clamp(30px,6vw,96px); line-height:.95; letter-spacing:-.025em;
+    text-transform:uppercase; color:var(--bone);
+  }
+
+  .frase{
+    font-family:var(--display); font-weight:600; font-variation-settings:"wdth" 88;
+    font-size:clamp(23px,4.05vw,70px); line-height:1.16; color:var(--ember-hi);
+    text-shadow:0 0 30px rgba(239,155,4,.5),0 0 80px rgba(239,155,4,.24);
+    max-width:20ch;
+  }
+
+  .corpo{
+    font-size:clamp(17px,1.9vw,33px); line-height:1.58;
+    color:rgba(246,238,227,.82); max-width:62ch;
+  }
+  .corpo + .corpo{ margin-top:.9em; }
+
+  ul.pontos{ list-style:none; max-width:64ch; }
+  ul.pontos li{
+    position:relative; padding-left:clamp(22px,2.2vw,38px);
+    margin-bottom:clamp(14px,2vh,26px);
+    font-size:clamp(16px,1.85vw,32px); line-height:1.48;
+    color:rgba(246,238,227,.86);
+  }
+  ul.pontos li::before{
+    content:""; position:absolute; left:0; top:.62em;
+    width:clamp(7px,.7vw,11px); aspect-ratio:1; border-radius:50%;
+    background:var(--ember); box-shadow:0 0 14px rgba(239,155,4,.75);
+  }
+  ul.pontos li b{ color:var(--bone); font-weight:600; }
+
+  .ref{
+    display:inline-block; margin-top:clamp(18px,2.6vh,34px);
+    font-size:clamp(11px,1.18vw,19px); letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(217,170,116,.6); font-weight:500;
+  }
+
+  /* versículo em tela cheia */
+  .respiro{ text-align:center; align-items:center; }
+  .respiro .interna{ max-width:900px; }
+  .respiro .texto{
+    font-family:var(--display); font-weight:400; font-variation-settings:"wdth" 96;
+    font-size:clamp(25px,4.45vw,77px); line-height:1.26; color:var(--bone);
+    text-shadow:0 0 60px rgba(239,155,4,.28);
+  }
+  .respiro .fonte{
+    margin-top:clamp(20px,3vh,40px);
+    font-size:clamp(11px,1.18vw,19px); letter-spacing:.26em;
+    text-transform:uppercase; color:var(--ember); font-weight:600;
+  }
+
+  /* listas numeradas (perguntas / aplicações) */
+  ol.numerada{ list-style:none; counter-reset:n; max-width:66ch; }
+  ol.numerada li{
+    counter-increment:n; position:relative;
+    padding-left:clamp(40px,4vw,74px); margin-bottom:clamp(16px,2.2vh,30px);
+    font-size:clamp(16px,1.85vw,32px); line-height:1.48; color:rgba(246,238,227,.86);
+  }
+  ol.numerada li::before{
+    content:counter(n); position:absolute; left:0; top:-.08em;
+    font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
+    font-size:clamp(28px,3.25vw,57px); line-height:1;
+    color:rgba(239,155,4,.45);
+  }
+
+  /* desafio */
+  .caixa{
+    border:1px solid rgba(239,155,4,.35); border-radius:16px;
+    background:linear-gradient(120deg,rgba(40,26,10,.6),rgba(14,9,4,.4));
+    padding:clamp(22px,3.4vw,56px); max-width:64ch;
+  }
+
+  /* música */
+  .video{
+    position:relative; width:100%; max-width:1000px;
+    aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+    border:1px solid rgba(217,170,116,.2);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.9);
+  }
+  .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+  /* versículos de apoio no rodapé da tela */
+  .versos-pe{
+    position:absolute; left:var(--pad); right:var(--pad);
+    bottom:calc(var(--pad) + 4px); z-index:3;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:clamp(18px,3.2vw,58px);
+    text-align:left;
+  }
+  .versos-pe p{
+    max-width:42ch; margin:0;
+    font-size:clamp(12px,1.14vw,19px); line-height:1.48;
+    color:rgba(246,238,227,.5);
+  }
+  .versos-pe span{
+    display:block; margin-top:.45em;
+    font-size:.85em; letter-spacing:.2em; text-transform:uppercase;
+    color:rgba(217,170,116,.62); font-weight:600;
+  }
+  @media (max-width:900px){
+    .versos-pe{ position:static; margin-top:clamp(30px,4vh,52px); }
+  }
+
+  /* passagem bíblica em duas colunas */
+  .passagem{
+    column-count:2; column-gap:clamp(26px,3.2vw,58px);
+    max-width:1180px;
+    font-size:clamp(13px,1.15vw,20px); line-height:1.5;
+    color:rgba(246,238,227,.8);
+  }
+  .passagem p{ margin:0 0 .46em; break-inside:avoid; }
+  .passagem p.fala{ padding-left:1.15em; color:var(--ember-hi); }
+  .passagem sup{
+    color:var(--ember); font-weight:600; font-size:.72em;
+    margin-right:.3em; vertical-align:.42em;
+  }
+  .credito{
+    margin-top:clamp(10px,1.4vh,18px);
+    font-size:clamp(9px,.95vw,14px); letter-spacing:.2em;
+    text-transform:uppercase; color:rgba(217,170,116,.38); font-weight:500;
+  }
+  @media (max-width:900px){ .passagem{ column-count:1; } }
+
+  /* rede de pesca decorativa */
+  .rede{
+    position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.55;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(217,170,116,.10) 0 1px,transparent 1px 48px),
+      repeating-linear-gradient(-45deg,rgba(217,170,116,.10) 0 1px,transparent 1px 48px);
+    -webkit-mask-image:radial-gradient(115% 85% at 80% 50%,#000 0%,rgba(0,0,0,0) 66%);
+            mask-image:radial-gradient(115% 85% at 80% 50%,#000 0%,rgba(0,0,0,0) 66%);
+  }
+
+  /* ---------- barra de progresso e navegação ---------- */
+  #barra{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--ember),var(--ember-hi));
+    box-shadow:0 0 14px rgba(239,155,4,.7); z-index:50;
+    transition:width .25s ease;
+  }
+  #voltar{
+    position:fixed; top:14px; left:16px; z-index:50;
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(217,170,116,.55); font-weight:500;
+    background:rgba(11,7,3,.6); padding:8px 14px; border-radius:999px;
+    border:1px solid rgba(217,170,116,.16); backdrop-filter:blur(6px);
+  }
+  #voltar:hover{ color:var(--ember); border-color:rgba(239,155,4,.4); }
+
+  #ajuda{
+    position:fixed; bottom:14px; right:16px; z-index:50;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(217,170,116,.32); font-weight:500; text-align:right;
+    transition:opacity .6s ease; pointer-events:none;
+  }
+
+  /* fragmento escondido */
+  .escondido{
+    font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
+    font-size:clamp(14px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
+    color:rgba(217,170,116,.11);
+    position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
+    user-select:text;
+  }
+
+  /* telas largas: listas em duas colunas para ocupar o espaço */
+  @media (min-width:1150px){
+    ul.pontos, ol.numerada{
+      max-width:100%;
+      column-count:2; column-gap:clamp(38px,3.8vw,78px);
+    }
+    ul.pontos li, ol.numerada li{ break-inside:avoid; }
+    .corpo{ max-width:52ch; }
+  }
+
+  @media (max-width:900px){
+    #trilho{ height:auto; overflow:visible; scroll-snap-type:none; }
+    .cena{ min-height:auto; padding-top:calc(var(--pad) + 50px); padding-bottom:calc(var(--pad) + 30px); }
+    #ajuda{ display:none; }
+  }
+</style>
 </head>
 <body>
 
@@ -29,11 +249,11 @@
     <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
     <div class="grao"></div>
     <div class="interna">
-      <div class="marcador">Peça <b>1</b> · 10 de agosto</div>
-      <div class="kicker">Tornando-me um</div>
-      <div class="gigante">Fundo</div>
+      <div class="marcador">Tornando-me um discípulo · Aula <b>1</b> · 10 de agosto</div>
+      <div class="kicker">Um convite a</div>
+      <div class="gigante" style="font-size:clamp(30px,12.4vw,238px)">Profundidade</div>
       <div class="rule" style="margin:clamp(20px,3vh,40px) 0 clamp(14px,2vh,26px)"></div>
-      <div class="hook">…um convite para ir mais fundo</div>
+      <div class="hook">O convite está feito, você vem?</div>
     </div>
   </section>
 
@@ -47,37 +267,63 @@
         restando apenas a palavra de quem o chamou.
       </p>
     </div>
+    <span class="escondido">Ainda</span>
   </section>
 
   <!-- 3 · TEXTO -->
-  <section class="cena" data-nota="Pedir que abram a Bíblia e leiam Lucas 5.1-11. Alguém lê em voz alta.">
+  <section class="cena" style="padding-top:calc(var(--pad) + 2px);padding-bottom:calc(var(--pad) + 6px)" data-nota="Alguém lê em voz alta, do começo ao fim. Não comentar durante a leitura — os tópicos vêm depois.">
     <div class="interna">
-      <div class="marcador">Texto de hoje</div>
-      <h2 class="cabeca">Lucas 5<br>1 a 11</h2>
-      <p class="corpo" style="margin-top:clamp(24px,3.4vh,48px)">
-        Abra a sua Bíblia e acompanhe a leitura.
-      </p>
+      <div class="marcador">Texto de hoje · <b>Lucas 5.1-11</b></div>
+      <h2 class="cabeca" style="font-size:clamp(20px,2.85vw,42px);margin-bottom:clamp(12px,1.7vh,22px)">Jesus chama os primeiros discípulos</h2>
+      <div class="passagem">
+        <p><sup>1</sup>Certo dia, Jesus estava perto do lago de Genesaré, e uma multidão o comprimia de todos os lados para ouvir a palavra de Deus.</p>
+        <p><sup>2</sup>Então, ele viu à beira do lago dois barcos, deixados ali pelos pescadores, que estavam lavando as suas redes.</p>
+        <p><sup>3</sup>Entrando em um dos barcos, o que pertencia a Simão, pediu-lhe que o afastasse um pouco da praia. Então, sentou-se e, do barco, ensinava o povo.</p>
+        <p><sup>4</sup>Tendo acabado de falar, disse a Simão:</p>
+        <p class="fala">— Vá para onde as águas são mais fundas, e lancem as redes para a pesca.</p>
+        <p><sup>5</sup>Simão respondeu:</p>
+        <p class="fala">— Mestre, trabalhamos muito a noite inteira e não pegamos nada. Mas, porque és tu quem está dizendo isto, vou lançar as redes.</p>
+        <p><sup>6</sup>Quando o fizeram, pegaram tal quantidade de peixes que as redes começaram a se romper.</p>
+        <p><sup>7</sup>Então, fizeram sinais aos seus companheiros no outro barco para que viessem ajudá-los. Eles vieram e encheram ambos os barcos, a ponto de começarem a afundar.</p>
+        <p><sup>8</sup>Quando Simão Pedro viu isso, ajoelhou-se aos pés de Jesus e disse:</p>
+        <p class="fala">— Afasta-te de mim, Senhor, porque sou um homem pecador!</p>
+        <p><sup>9</sup>Pois ele e todos os seus companheiros estavam perplexos com a pesca que haviam feito,</p>
+        <p><sup>10</sup>como também Tiago e João, os filhos de Zebedeu, que eram sócios de Simão. Jesus disse a Simão:</p>
+        <p class="fala">— Não tenha medo; de agora em diante, você será pescador de homens.</p>
+        <p><sup>11</sup>Eles, então, arrastaram os seus barcos para a praia, deixaram tudo e o seguiram.</p>
+      </div>
+      <div class="credito">Nova Versão Internacional · NVI</div>
     </div>
   </section>
 
   <!-- 4 · CONTEXTO -->
   <section class="cena" data-nota="Contexto rápido. Não alongar — o peso da noite está nos tópicos.">
+    <div class="rede" aria-hidden="true"></div>
+    <div class="grao"></div>
     <div class="interna">
       <div class="marcador">Contexto</div>
       <ul class="pontos">
         <li>Lago de <b>Genesaré</b> — o mesmo mar da Galileia, cercado de vilarejos que viviam da pesca.</li>
         <li>Na Galileia, pescava-se <b>à noite</b>, e não de manhã.</li>
+        <li>Simão não estava sozinho: Tiago e João eram <b>sócios</b> dele. O chamado alcança um time inteiro, e não um homem só.</li>
+        <li>O povo se apertava para ouvir. Jesus precisa de um púlpito e escolhe <b>o barco de um homem cansado</b>.</li>
+        <li>No v. 5 Pedro chama Jesus de <b>Mestre</b>. Depois da pesca, no v. 8, já chama de <b>Senhor</b>.</li>
         <li>Logo depois deste episódio, Lucas narra a cura do leproso, a do paralítico e o chamado de Levi. Uma sequência de chamados — e este é o primeiro.</li>
       </ul>
     </div>
+    <span class="escondido">E descobri</span>
   </section>
 
   <!-- 5 · TÓPICO 1 -->
-  <section class="cena" data-nota="Tópico 1. A pergunta das redes lavadas é o gancho — deixar no ar alguns segundos antes de responder.">
+  <section class="cena respiro" data-nota="Tópico 1. A pergunta das redes lavadas é o gancho — deixar no ar alguns segundos antes de responder. Os dois versículos do rodapé são a base: ler só se alguém perguntar de onde vem isso.">
     <div class="fogo"><div class="heat"><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <div class="marcador">Tópico <b>1</b> · Lucas 5.2-3</div>
-      <p class="frase">O dia de frustração não pode determinar uma vida de desleixo.</p>
+      <p class="frase" style="font-size:clamp(27px,4.9vw,86px);max-width:17ch;margin:0 auto">O dia de frustração não pode determinar uma vida de desleixo.</p>
+    </div>
+    <div class="versos-pe">
+      <p>Assim, quer vocês comam, quer bebam, quer façam qualquer outra coisa, façam tudo para a glória de Deus.<span>1 Coríntios 10.31 · NVI</span></p>
+      <p>Tudo o que fizerem, façam de todo o coração, como para o Senhor, não para os homens, sabendo que receberão do Senhor a recompensa da herança, pois é a Cristo, o Senhor, a quem vocês servem.<span>Colossenses 3.23-24 · NVI</span></p>
     </div>
   </section>
 
@@ -121,6 +367,7 @@
       </ul>
       <span class="ref">Lucas 5.4</span>
     </div>
+    <span class="escondido">Sozinho</span>
   </section>
 
   <!-- 8 · RESPIRO -->
@@ -161,41 +408,30 @@
     </div>
   </section>
 
-  <!-- 11 · APLICAÇÕES -->
-  <section class="cena" data-nota="Aplicações. Se o tempo apertar, ficar só com a primeira.">
+  <!-- 11 · CONVERSAR E APLICAR -->
+  <section class="cena" data-nota="Abrir os microfones. Cada item é pergunta e tarefa: deixe responderem antes de ler a parte em destaque.">
     <div class="interna">
-      <div class="marcador">Aplicações</div>
+      <div class="marcador">Para conversar <b>e</b> levar para a semana</div>
       <ol class="numerada">
-        <li>Identificar um lugar onde a sua experiência já concluiu que não adianta — e nomeá-lo por escrito nesta semana.</li>
-        <li>Antes de decidir algo importante nos próximos sete dias, perguntar primeiro o que a Escritura diz.</li>
-        <li>Cuidar bem de uma tarefa pequena e sem plateia — a rede lavada depois da noite sem peixe.</li>
+        <li>Por que aqueles homens estavam lavando as redes depois de uma noite inteira sem pegar nada? <b>Cuide bem, esta semana, de uma tarefa pequena e sem plateia.</b></li>
+        <li>Qual foi a última vez que você obedeceu a algo sem entender? <b>Antes da próxima decisão importante, pergunte primeiro o que a Escritura diz.</b></li>
+        <li>Se a experiência deixa de ser o critério, o que sobra para decidir? <b>Escreva o nome de um lugar onde a sua experiência já concluiu que não adianta.</b></li>
+        <li>Pedro tinha toda a razão técnica para dizer não. Por que você acha que ele lançou a rede mesmo assim? <b>Lance a sua uma vez, nesta semana.</b></li>
       </ol>
     </div>
-  </section>
-
-  <!-- 12 · PERGUNTAS -->
-  <section class="cena" data-nota="Abrir os microfones. Não responder por eles.">
-    <div class="interna">
-      <div class="marcador">Para conversar</div>
-      <ol class="numerada">
-        <li>Por que aqueles homens estavam lavando as redes depois de uma noite inteira sem pegar nada?</li>
-        <li>Qual foi a última vez que você obedeceu a algo sem entender? O que aconteceu?</li>
-        <li>Se a experiência deixa de ser o critério, o que sobra para decidir?</li>
-        <li>Pedro tinha toda a razão técnica para dizer não. Por que você acha que ele lançou a rede mesmo assim?</li>
-      </ol>
-    </div>
+    <span class="escondido">Quase</span>
   </section>
 
   <!-- 13 · DESAFIO -->
-  <section class="cena" data-nota="O desafio é o que mantém a peça viva até o dia 17. Pedir que anotem.">
+  <section class="cena respiro" data-nota="O desafio é o que mantém a aula viva até o dia 17. Pedir que anotem.">
     <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
     <div class="interna">
       <div class="marcador">Desafio da semana</div>
-      <div class="caixa">
-        <p class="frase" style="font-size:clamp(19px,2.9vw,46px);max-width:24ch">
+      <div class="caixa" style="margin:0 auto">
+        <p class="frase" style="font-size:clamp(19px,2.9vw,46px);max-width:24ch;margin:0 auto">
           Lance a rede uma vez, onde a sua experiência já disse não.
         </p>
-        <p class="corpo" style="margin-top:clamp(18px,2.4vh,32px)">
+        <p class="corpo" style="margin:clamp(18px,2.4vh,32px) auto 0">
           Pode ser a conversa que você já desistiu de ter, a pessoa por quem você parou de orar,
           a matéria que você já decidiu que não entra na sua cabeça. Escolha uma, faça uma vez,
           e anote o que aconteceu para contar no dia 17.
@@ -205,11 +441,11 @@
   </section>
 
   <!-- 14 · MÚSICA -->
-  <section class="cena" data-nota="ATENÇÃO: marcar 'compartilhar áudio da guia' no Meet ANTES de dar play. Não comentar a letra.">
+  <section class="cena respiro" data-nota="ATENÇÃO: marcar 'compartilhar áudio da guia' no Meet ANTES de dar play. Não comentar a letra.">
     <div class="interna">
       <div class="marcador">Canção da semana</div>
       <h2 class="cabeca" style="font-size:clamp(24px,4vw,60px);margin-bottom:clamp(20px,3vh,36px)">Uma Vez · fhop music</h2>
-      <div class="video">
+      <div class="video" style="margin:0 auto">
         <iframe src="https://www.youtube-nocookie.com/embed/fOBGrF-bQbA"
                 title="Uma Vez — fhop music"
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -223,6 +459,7 @@
   <section class="cena respiro" data-nota="Ler o v.11, descrever a cena da praia, fazer a pergunta e ENCERRAR. Não responder.">
     <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
+      <div class="marcador">A pergunta que não quer calar</div>
       <p class="texto" style="font-size:clamp(20px,3.2vw,52px)">
         Eles, então, arrastaram os seus barcos para a praia, deixaram tudo e o seguiram.
       </p>
@@ -234,12 +471,100 @@
         Segunda que vem, dia 17.
       </p>
     </div>
-    <span class="escondido">E descobri</span>
+    <span class="escondido">Talvez</span>
   </section>
 
 </div>
 
 <script src="fogo.js"></script>
-<script src="apresentar.js"></script>
+<script>
+(function(){
+  var trilho = document.getElementById('trilho');
+  var cenas = Array.prototype.slice.call(document.querySelectorAll('.cena'));
+  var barra = document.getElementById('barra');
+  var ajuda = document.getElementById('ajuda');
+  var atual = 0;
+  var notasWin = null;
+
+  function desktop(){ return window.innerWidth > 900; }
+
+  function marcarProgresso(){
+    barra.style.width = ((atual + 1) / cenas.length * 100) + '%';
+  }
+
+  function irPara(i){
+    if (i < 0 || i >= cenas.length) return;
+    atual = i;
+    cenas[i].scrollIntoView({ behavior:'smooth', block:'start' });
+    marcarProgresso();
+    atualizarNotas();
+  }
+
+  /* acompanha a rolagem manual também */
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if (e.isIntersecting){
+          atual = cenas.indexOf(e.target);
+          marcarProgresso();
+          atualizarNotas();
+        }
+      });
+    }, { threshold:0.5 });
+    cenas.forEach(function(c){ io.observe(c); });
+  }
+
+  /* ---- painel de notas em janela separada ----
+     Compartilhe a GUIA no Meet. Esta janela fica fora do
+     compartilhamento, então só você enxerga. */
+  function abrirNotas(){
+    if (notasWin && !notasWin.closed){ notasWin.close(); notasWin = null; return; }
+    notasWin = window.open('', 'notas_adsv', 'width=460,height=380');
+    if (!notasWin) return;
+    notasWin.document.write(
+      '<!doctype html><meta charset="utf-8"><title>Notas — Aula 1</title>' +
+      '<style>body{margin:0;padding:22px;background:#12100d;color:#F6EEE3;' +
+      'font:15px/1.6 -apple-system,Segoe UI,sans-serif}' +
+      'h1{font-size:11px;letter-spacing:.24em;text-transform:uppercase;' +
+      'color:#EF9B04;margin:0 0 14px;font-weight:600}' +
+      '#n{font-size:17px;line-height:1.55}' +
+      '#p{margin-top:20px;font-size:12px;color:#8A7A66}</style>' +
+      '<h1>Notas do apresentador</h1><div id="n"></div><div id="p"></div>'
+    );
+    notasWin.document.close();
+    atualizarNotas();
+  }
+
+  function atualizarNotas(){
+    if (!notasWin || notasWin.closed) return;
+    var n = notasWin.document.getElementById('n');
+    var p = notasWin.document.getElementById('p');
+    if (!n) return;
+    n.textContent = cenas[atual].getAttribute('data-nota') || '—';
+    p.textContent = 'Tela ' + (atual + 1) + ' de ' + cenas.length;
+  }
+
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowDown' || k === 'PageDown' || k === ' '){
+      if (desktop()){ e.preventDefault(); irPara(atual + 1); }
+    } else if (k === 'ArrowUp' || k === 'PageUp'){
+      if (desktop()){ e.preventDefault(); irPara(atual - 1); }
+    } else if (k === 'n' || k === 'N'){
+      abrirNotas();
+    } else if (k === 'f' || k === 'F'){
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+
+  window.addEventListener('beforeunload', function(){
+    if (notasWin && !notasWin.closed) notasWin.close();
+  });
+
+  marcarProgresso();
+  setTimeout(function(){ ajuda.style.opacity = '0'; }, 6000);
+})();
+</script>
 </body>
 </html>
