@@ -213,10 +213,15 @@
   /* fragmento escondido */
   .escondido{
     font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
-    font-size:clamp(14px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
-    color:rgba(217,170,116,.11);
+    font-size:clamp(15px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
+    color:rgba(217,170,116,.20);
     position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
     user-select:text;
+  }
+
+  /* 90% assiste por celular: um pouco mais de presença em tela pequena */
+  @media (max-width:900px){
+    .escondido{ font-size:16px; color:rgba(217,170,116,.26); }
   }
 
   /* telas largas: listas em duas colunas para ocupar o espaço */
