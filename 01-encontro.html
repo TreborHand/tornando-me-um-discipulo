@@ -27,6 +27,9 @@
     background:linear-gradient(168deg,#150E06 0%,#0B0703 60%,#0E0904 100%);
     border-bottom:1px solid rgba(217,170,116,.07);
     overflow:hidden;
+    /* o navegador nem desenha o bloco que está fora da tela */
+    content-visibility:auto;
+    contain-intrinsic-size:auto 100svh;
   }
   .cena > *{ position:relative; z-index:2; }
   .cena .fogo,.cena .grao,.cena .brasa-glow{ z-index:0; }
@@ -225,8 +228,7 @@
   .escondido{
     font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
     font-size:clamp(18px,1.8vw,30px); letter-spacing:.26em; text-transform:uppercase;
-    color:rgba(217,170,116,.46);
-    text-shadow:0 0 18px rgba(239,155,4,.22);
+    color:rgba(217,170,116,.5);
     position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
     user-select:text;
   }
