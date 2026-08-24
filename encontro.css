@@ -201,14 +201,15 @@ ol.numerada li::before{
 /* fragmento escondido */
 .escondido{
   font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
-  font-size:clamp(16px,1.6vw,26px); letter-spacing:.28em; text-transform:uppercase;
-  color:rgba(217,170,116,.28);
+  font-size:clamp(18px,1.8vw,30px); letter-spacing:.26em; text-transform:uppercase;
+  color:rgba(217,170,116,.46);
+  text-shadow:0 0 18px rgba(239,155,4,.22);
   position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
   user-select:text;
 }
 /* 90% assiste por celular: um pouco mais de presença em tela pequena */
 @media (max-width:900px){
-  .escondido{ font-size:17px; color:rgba(217,170,116,.34); }
+  .escondido{ font-size:19px; color:rgba(217,170,116,.52); }
 }
 /* ---------- parede de palavras (fundo de texto) ---------- */
 .cena .parede{
