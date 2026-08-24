@@ -11,6 +11,25 @@
 
   var CORES = ['#EF9B04', '#FFC46A', '#D9AA74', '#C6600A'];
 
+  /* brilho desenhado UMA vez por cor. Muito mais barato que shadowBlur
+     em cada partícula, em cada quadro. */
+  var SPRITES = {};
+  function brilho(cor){
+    if (SPRITES[cor]) return SPRITES[cor];
+    var R = 24, s = document.createElement('canvas');
+    s.width = s.height = R * 2;
+    var g = s.getContext('2d');
+    var grad = g.createRadialGradient(R, R, 0, R, R, R);
+    grad.addColorStop(0,    cor);
+    grad.addColorStop(0.18, cor);
+    grad.addColorStop(0.5,  cor + '55');
+    grad.addColorStop(1,    cor + '00');
+    g.fillStyle = grad;
+    g.fillRect(0, 0, R * 2, R * 2);
+    SPRITES[cor] = s;
+    return s;
+  }
+
   function Fogueira(canvas) {
     this.canvas  = canvas;
     this.ctx     = canvas.getContext('2d');
@@ -30,7 +49,7 @@
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
 
     // densidade proporcional à área, com teto para não pesar no celular
-    this.alvo = Math.min(105, Math.round((this.w * this.h) / 19000));
+    this.alvo = Math.min(58, Math.round((this.w * this.h) / 30000));
   };
 
   Fogueira.prototype.nova = function (inicio) {
@@ -79,17 +98,11 @@
       alpha *= 0.9;
 
       ctx.globalAlpha = Math.max(alpha, 0);
-      ctx.fillStyle   = p.cor;
-      ctx.shadowBlur  = p.r * 8;
-      ctx.shadowColor = p.cor;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
+      var d = p.r * 5.5;
+      ctx.drawImage(brilho(p.cor), p.x - d, p.y - d, d * 2, d * 2);
     }
 
     ctx.globalAlpha = 1;
-    ctx.shadowBlur = 0;
     ctx.globalCompositeOperation = 'source-over';
 
     this.raf = window.requestAnimationFrame(this.passo.bind(this));
