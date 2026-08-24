@@ -30,7 +30,7 @@
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
 
     // densidade proporcional à área, com teto para não pesar no celular
-    this.alvo = Math.min(70, Math.round((this.w * this.h) / 26000));
+    this.alvo = Math.min(105, Math.round((this.w * this.h) / 19000));
   };
 
   Fogueira.prototype.nova = function (inicio) {
@@ -76,11 +76,11 @@
 
       // aparece, brilha, apaga
       var alpha = t < 0.14 ? (t / 0.14) : (1 - (t - 0.14) / 0.86);
-      alpha *= 0.72;
+      alpha *= 0.9;
 
       ctx.globalAlpha = Math.max(alpha, 0);
       ctx.fillStyle   = p.cor;
-      ctx.shadowBlur  = p.r * 7;
+      ctx.shadowBlur  = p.r * 8;
       ctx.shadowColor = p.cor;
 
       ctx.beginPath();
