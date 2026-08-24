@@ -210,18 +210,30 @@
     transition:opacity .6s ease; pointer-events:none;
   }
 
+  /* numeração dos blocos — mesmo padrão das aulas 2 em diante */
+  #bloco{
+    position:fixed; bottom:14px; left:16px; z-index:50;
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    color:rgba(217,170,116,.38); font-weight:600;
+    background:rgba(11,7,3,.55); padding:6px 12px; border-radius:999px;
+    border:1px solid rgba(217,170,116,.13); backdrop-filter:blur(6px);
+    pointer-events:none;
+  }
+  #bloco b{ color:var(--ember); font-weight:800; }
+
   /* fragmento escondido */
   .escondido{
     font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
-    font-size:clamp(16px,1.6vw,26px); letter-spacing:.28em; text-transform:uppercase;
-    color:rgba(217,170,116,.28);
+    font-size:clamp(18px,1.8vw,30px); letter-spacing:.26em; text-transform:uppercase;
+    color:rgba(217,170,116,.46);
+    text-shadow:0 0 18px rgba(239,155,4,.22);
     position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
     user-select:text;
   }
 
   /* 90% assiste por celular: um pouco mais de presença em tela pequena */
   @media (max-width:900px){
-    .escondido{ font-size:17px; color:rgba(217,170,116,.34); }
+    .escondido{ font-size:19px; color:rgba(217,170,116,.52); }
   }
 
   /* telas largas: listas em duas colunas para ocupar o espaço */
@@ -346,6 +358,7 @@
 
   <!-- 6 · RESPIRO -->
   <section class="cena respiro" data-nota="Silêncio. Não falar por cima.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <p class="texto">Entrando em um dos barcos, o que pertencia a Simão, pediu-lhe que o afastasse um pouco da praia.</p>
       <div class="fonte">Lucas 5.3 · NVI</div>
@@ -377,6 +390,7 @@
 
   <!-- 8 · RESPIRO -->
   <section class="cena respiro" data-nota="Segundo respiro. Ler junto, em voz alta.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <p class="texto">Vá para onde as águas são mais fundas, e lancem as redes para a pesca.</p>
       <div class="fonte">Lucas 5.4 · NVI</div>
@@ -407,6 +421,7 @@
 
   <!-- 10 · RESPIRO -->
   <section class="cena respiro" data-nota="O verso da noite. Deixar na tela enquanto conclui o tópico.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <p class="texto">Mas, porque és tu quem está dizendo isto, vou lançar as redes.</p>
       <div class="fonte">Lucas 5.5b · NVI</div>
@@ -447,6 +462,7 @@
 
   <!-- 14 · MÚSICA -->
   <section class="cena respiro" data-nota="ATENÇÃO: marcar 'compartilhar áudio da guia' no Meet ANTES de dar play. Não comentar a letra.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
     <div class="interna">
       <div class="marcador">Canção da semana</div>
       <h2 class="cabeca" style="font-size:clamp(24px,4vw,60px);margin-bottom:clamp(20px,3vh,36px)">Uma Vez · fhop music</h2>
@@ -569,6 +585,27 @@
 
   marcarProgresso();
   setTimeout(function(){ ajuda.style.opacity = '0'; }, 6000);
+})();
+</script>
+<script>
+/* numeração dos blocos — mesmo padrão das aulas 2 em diante */
+(function(){
+  var cenas = document.querySelectorAll('.cena');
+  if (!cenas.length) return;
+  var el = document.createElement('div');
+  el.id = 'bloco';
+  document.body.appendChild(el);
+  function dois(n){ return (n < 10 ? '0' : '') + n; }
+  function marcar(i){ el.innerHTML = 'Bloco <b>' + dois(i + 1) + '</b> · ' + dois(cenas.length); }
+  marcar(0);
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if (e.isIntersecting) marcar(Array.prototype.indexOf.call(cenas, e.target));
+      });
+    }, { threshold:0.5 });
+    Array.prototype.forEach.call(cenas, function(c){ io.observe(c); });
+  }
 })();
 </script>
 </body>
