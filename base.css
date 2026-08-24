@@ -119,8 +119,7 @@ img{ display:block; max-width:100%; }
   bottom:0;
   display:block;
   border-radius:50%;
-  filter:blur(54px);
-  background:radial-gradient(circle at 50% 70%,rgba(239,155,4,.62) 0%,rgba(239,155,4,.2) 45%,rgba(239,155,4,0) 72%);
+  background:radial-gradient(circle at 50% 70%,rgba(239,155,4,.42) 0%,rgba(239,155,4,.24) 26%,rgba(239,155,4,.1) 52%,rgba(239,155,4,.03) 70%,rgba(239,155,4,0) 84%);
   animation:respira 7s ease-in-out infinite;
 }
 .fogo .heat i:nth-child(1){ left:6%;  width:44%; height:78%; animation-delay:0s;    opacity:.9; }
@@ -140,8 +139,7 @@ img{ display:block; max-width:100%; }
   width:130%; height:76%;
   transform:translateX(-50%);
   pointer-events:none;
-  background:radial-gradient(ellipse at 50% 60%,rgba(239,155,4,.29) 0%,rgba(198,96,10,.14) 38%,rgba(239,155,4,0) 70%);
-  filter:blur(24px);
+  background:radial-gradient(ellipse at 50% 60%,rgba(239,155,4,.26) 0%,rgba(198,96,10,.13) 34%,rgba(198,96,10,.05) 55%,rgba(239,155,4,0) 76%);
   animation:pulsaGlow 9s ease-in-out infinite;
 }
 @keyframes pulsaGlow{
@@ -155,8 +153,7 @@ img{ display:block; max-width:100%; }
   inset:0;
   z-index:1;
   pointer-events:none;
-  opacity:.055;
-  mix-blend-mode:overlay;
+  opacity:.04;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23r)'/></svg>");
   background-size:180px 180px;
 }
