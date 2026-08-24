@@ -201,14 +201,40 @@ ol.numerada li::before{
 /* fragmento escondido */
 .escondido{
   font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
-  font-size:clamp(15px,1.5vw,24px); letter-spacing:.3em; text-transform:uppercase;
-  color:rgba(217,170,116,.20);
+  font-size:clamp(16px,1.6vw,26px); letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(217,170,116,.28);
   position:absolute; right:var(--pad); bottom:calc(var(--pad) + 10px); z-index:3;
   user-select:text;
 }
 /* 90% assiste por celular: um pouco mais de presença em tela pequena */
 @media (max-width:900px){
-  .escondido{ font-size:16px; color:rgba(217,170,116,.26); }
+  .escondido{ font-size:17px; color:rgba(217,170,116,.34); }
+}
+/* ---------- parede de palavras (fundo de texto) ---------- */
+.cena .parede{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  display:flex; flex-wrap:wrap; align-content:space-evenly; justify-content:center;
+  gap:clamp(10px,1.4vh,20px) clamp(16px,2vw,38px);
+  padding:calc(var(--pad) + 46px) var(--pad) calc(var(--pad) + 52px);
+  font-family:var(--display); font-weight:600; font-variation-settings:"wdth" 84;
+  font-size:clamp(12px,1.5vw,25px); line-height:1.35; letter-spacing:.01em;
+  color:rgba(246,238,227,.19);
+  /* vazio no meio: as palavras cercam a frase em vez de atravessá-la */
+  -webkit-mask-image:radial-gradient(92% 74% at 50% 50%,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,#000 58%,#000 82%,rgba(0,0,0,0) 100%);
+          mask-image:radial-gradient(92% 74% at 50% 50%,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 33%,#000 58%,#000 82%,rgba(0,0,0,0) 100%);
+}
+.cena .parede span{ white-space:nowrap; }
+
+.muro{ text-align:center; align-items:center; }
+.muro .interna{ max-width:960px; }
+.muro .frente{
+  position:relative; z-index:3;
+  padding:clamp(34px,6vh,86px) clamp(24px,4vw,70px);
+  background:radial-gradient(62% 72% at 50% 50%,rgba(11,7,3,.97) 0%,rgba(11,7,3,.9) 52%,rgba(11,7,3,0) 100%);
+}
+.muro .frente .frase{ max-width:18ch; margin:0 auto; }
+@media (max-width:900px){
+  .cena .parede{ font-size:12px; color:rgba(246,238,227,.15); }
 }
 
 /* ---------- pergunta em destaque (título grande do bloco) ---------- */
