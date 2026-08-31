@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 4 — Jesus morreu e parece que o propósito também</title>
+<meta name="theme-color" content="#0E0904">
+<meta property="og:title" content="Aula 4 — Jesus morreu e parece que o propósito também">
+<meta property="og:description" content="Tornando-me um discípulo · 31 de agosto · ADSV">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="encontro.css">
+
+<style>
+/* ─────────────────────────────────────────────
+   Estilos exclusivos da Peça 4.
+   Ficam aqui para não mexer no encontro.css,
+   que é compartilhado pelas outras três aulas.
+   ───────────────────────────────────────────── */
+
+/* comparação em duas colunas — Lucas 5 x João 21 */
+.duas{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0 clamp(18px,3vw,66px);
+  width:100%; max-width:1180px; margin:0 auto;
+}
+.duas .cab{
+  font-family:var(--display); font-weight:800; font-variation-settings:"wdth" 82;
+  font-size:clamp(16px,2.5vw,42px); line-height:1; text-transform:uppercase;
+  padding-bottom:clamp(10px,1.4vh,18px); margin-bottom:clamp(4px,.6vh,8px);
+  border-bottom:1px solid rgba(239,155,4,.34);
+}
+.duas .cab.a{ color:rgba(246,238,227,.52); }
+.duas .cab.b{ color:var(--ember-hi); text-shadow:0 0 20px rgba(239,155,4,.45); }
+.duas p{
+  font-size:clamp(12px,1.36vw,23px); line-height:1.44;
+  padding:clamp(9px,1.5vh,19px) 0;
+  border-bottom:1px solid rgba(217,170,116,.09);
+}
+.duas p.a{ color:rgba(246,238,227,.5); }
+.duas p.b{ color:rgba(246,238,227,.92); }
+.duas p.forte{ color:var(--ember-hi); font-weight:500; }
+.duas .v{ color:var(--ember); font-weight:600; font-size:.8em; }
+@media (max-width:900px){
+  .duas{ grid-template-columns:1fr; }
+  .duas .cab.b{ margin-top:clamp(26px,4vh,44px); }
+}
+
+/* banco de palavras do caça-palavras */
+.banco{ display:flex; flex-wrap:wrap; gap:clamp(7px,1vh,13px) clamp(8px,1vw,16px); }
+.banco b{
+  display:block; width:100%; font-family:var(--sans); font-weight:500;
+  font-size:clamp(9px,1vw,16px); letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(217,170,116,.5); margin:clamp(15px,2.2vh,26px) 0 3px;
+}
+.banco b:first-child{ margin-top:0; }
+.banco span{
+  font-family:var(--display); font-weight:600; font-variation-settings:"wdth" 86;
+  font-size:clamp(12px,1.45vw,25px); letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(246,238,227,.42);
+  border:1px solid rgba(217,170,116,.16); border-radius:999px;
+  padding:clamp(5px,.7vh,10px) clamp(11px,1.2vw,21px);
+  white-space:nowrap;
+}
+
+/* tentativas que dava para montar */
+.tentativa{
+  font-family:var(--display); font-weight:600; font-variation-settings:"wdth" 88;
+  font-size:clamp(16px,2.45vw,43px); line-height:1.22;
+  color:rgba(246,238,227,.42);
+  margin-bottom:clamp(11px,1.7vh,25px);
+}
+.tentativa::before{
+  content:"✕"; color:rgba(217,170,116,.32);
+  font-size:.6em; margin-right:.75em; vertical-align:.14em;
+}
+.tentativa.real{
+  font-weight:800; font-variation-settings:"wdth" 84;
+  font-size:clamp(21px,3.5vw,64px); line-height:1.14;
+  color:var(--ember-hi); text-shadow:0 0 28px rgba(239,155,4,.6);
+  margin:clamp(20px,3.2vh,44px) 0 0;
+  padding-top:clamp(19px,2.8vh,38px);
+  border-top:1px solid rgba(239,155,4,.34);
+}
+.tentativa.real::before{ content:"→"; color:var(--ember); }
+</style>
+</head>
+<body>
+
+<div id="barra"></div>
+<a id="voltar" href="index.html">← Série</a>
+<div id="ajuda">↑ ↓ blocos · → ← revelar · N notas · F tela cheia</div>
+
+<div id="trilho">
+
+  <!-- BLOCO 01 · CAPA -->
+  <section class="cena" data-nota="Última aula. Dar tempo para entrarem. Avisar duas coisas: (1) hoje sai o resultado do caça-palavras; (2) ainda tem uma palavra escondida NESTA aula — então vale prestar atenção até o fim.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
+    <div class="grao"></div>
+    <div class="interna">
+      <div class="marcador">Aula <b>4</b> · 31 de agosto · última</div>
+      <div class="kicker">Jesus morreu e parece que o</div>
+      <div class="gigante" style="font-size:clamp(30px,13vw,250px)">Propósito</div>
+      <div class="rule" style="margin:clamp(20px,3vh,40px) 0 clamp(14px,2vh,26px)"></div>
+      <div class="hook">…<em>também</em>.</div>
+    </div>
+    <span class="escondido">Hoje</span>
+  </section>
+
+  <!-- BLOCO 02 · A DÍVIDA DA SEMANA PASSADA -->
+  <section class="cena centro" data-nota="Abrir os microfones. Semana passada eu FECHEI a aula com essa pergunta e prometi responder hoje. Cobrar a pergunta antes de responder: quem ficou pensando nisso? Não apressar. Só depois trazer a linha de baixo (→).">
+    <div class="interna" style="max-width:1340px">
+      <div class="marcador">Ficou em aberto · 24 de agosto</div>
+      <p class="frase" style="max-width:100%;font-size:clamp(20px,3.1vw,48px);text-wrap:balance">
+        E se eu te disser que você corre um sério risco de estar fazendo as coisas de Deus, mas não para Deus?
+      </p>
+      <p class="corpo revelar" style="margin:clamp(24px,3.2vh,44px) auto 0">
+        Hoje eu respondo. Mas a resposta não está num conceito — está numa madrugada de pesca que não pegou nada.
+      </p>
+    </div>
+    <span class="escondido">Comigo</span>
+  </section>
+
+  <!-- BLOCO 03 · TEXTO -->
+  <section class="cena" style="padding-top:calc(var(--pad) + 2px);padding-bottom:calc(var(--pad) + 6px)" data-nota="Alguém lê em voz alta, do começo ao fim. Não comentar durante a leitura — os tópicos vêm depois. Só marcar que são catorze versículos e que a cena inteira acontece de madrugada.">
+    <div class="interna">
+      <div class="marcador">Texto de hoje · <b>João 21.1-14</b></div>
+      <div class="passagem">
+        <p><sup>1</sup>Depois disso Jesus apareceu novamente aos seus discípulos, à margem do mar de Tiberíades. Foi assim:</p>
+        <p><sup>2</sup>Estavam juntos Simão Pedro; Tomé, chamado Dídimo; Natanael, de Caná da Galileia; os filhos de Zebedeu; e dois outros discípulos.</p>
+        <p class="fala"><sup>3</sup>“Vou pescar”, disse-lhes Simão Pedro. E eles disseram: “Nós também vamos com você”. Eles foram e entraram no barco, mas naquela noite não pegaram nada.</p>
+        <p><sup>4</sup>Ao amanhecer, Jesus estava na praia, mas os discípulos não o reconheceram.</p>
+        <p><sup>5</sup>Ele lhes perguntou: “Filhos, vocês não têm nada para comer?” Eles responderam que não.</p>
+        <p><sup>6</sup>Ele disse: “Lancem a rede do lado direito do barco e vocês encontrarão”. Eles a lançaram, e não conseguiam recolhê-la, tal era a quantidade de peixes.</p>
+        <p><sup>7</sup>O discípulo a quem Jesus amava disse a Pedro: “É o Senhor!” Simão Pedro, ouvindo-o dizer isso, vestiu a capa, pois a havia tirado, e lançou-se ao mar.</p>
+        <p class="fala"><sup>8</sup>Os outros discípulos vieram no barco, arrastando a rede cheia de peixes, pois estavam a cerca de noventa metros da praia.</p>
+        <p><sup>9</sup>Quando desembarcaram, viram ali uma fogueira, peixe sobre brasas, e um pouco de pão.</p>
+        <p><sup>10</sup>Disse-lhes Jesus: “Tragam alguns dos peixes que acabaram de pescar”.</p>
+        <p><sup>11</sup>Simão Pedro entrou no barco e arrastou a rede para a praia. Estava cheia de peixes grandes, cento e cinquenta e três; e, apesar da quantidade, a rede não se rompeu.</p>
+        <p><sup>12</sup>Jesus lhes disse: “Venham comer”. Nenhum dos discípulos tinha coragem de lhe perguntar: “Quem és tu?” Sabiam que era o Senhor.</p>
+        <p><sup>13</sup>Jesus aproximou-se, tomou o pão e o deu a eles, fazendo o mesmo com o peixe.</p>
+        <p><sup>14</sup>Esta foi a terceira vez que Jesus apareceu aos seus discípulos, depois que ressuscitou dos mortos.</p>
+      </div>
+      <div class="credito">Nova Versão Internacional · NVI</div>
+    </div>
+    <span class="escondido">Eu deixei tudo</span>
+  </section>
+
+  <!-- BLOCO 04 · CONTEXTO -->
+  <section class="cena" data-nota="Contexto. Não é um capítulo sobre pesca — é um capítulo sobre luto. GUARDAR a frase 'e raramente voltamos sozinhos': ela é a ponte para o tópico 2, não desenvolver aqui.">
+    <div class="interna">
+      <div class="marcador">Contexto</div>
+      <p class="pergunta">O pano de fundo</p>
+      <p class="corpo">
+        Jesus tinha morrido. E quando Jesus morre, morre junto o motivo pelo qual eles largaram tudo três anos antes.
+        Não é que eles pararam de crer — é que eles pararam de ter para onde ir.
+      </p>
+      <div class="rule revelar" style="margin:clamp(26px,3.6vh,50px) 0"></div>
+      <p class="frase revelar" style="max-width:26ch">
+        Toda vez que Jesus morre dentro de nós, voltamos a fazer tudo o que fazíamos antes de conhecê-lo.
+      </p>
+      <p class="corpo revelar" style="margin-top:clamp(24px,3.2vh,44px)">
+        E raramente voltamos sozinhos.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOCO 05 · RESPIRO · v.3a -->
+  <section class="cena respiro" data-nota="Deixar sozinha na tela, em silêncio. Três palavras que desmontam três anos de caminhada. Ninguém discutiu, ninguém orou, ninguém perguntou. Só anunciou.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
+    <div class="interna">
+      <p class="texto">— Vou pescar — disse-lhes Simão Pedro.</p>
+      <div class="fonte">João 21.3a · NVI</div>
+    </div>
+    <span class="escondido">Então</span>
+  </section>
+
+  <!-- BLOCO 06 · TÓPICO 1 -->
+  <section class="cena" data-nota="Tópico 1. Trazer os três 'você pode' um a um (→) — eles são concessões, estou dando razão à pessoa. Só depois vem o filete e a virada: nada disso muda a responsabilidade.">
+    <div class="interna">
+      <div class="marcador">Tópico <b>1</b> · João 21.3a</div>
+      <p class="pergunta">O que você acha é irrelevante</p>
+      <ul class="pontos">
+        <li class="revelar">Você pode ignorar aquilo que você carrega.</li>
+        <li class="revelar">Você pode não entender o porquê.</li>
+        <li class="revelar">Você pode até achar que é loucura alguém decidir te seguir.</li>
+      </ul>
+      <div class="rule revelar" style="margin:clamp(26px,3.6vh,50px) 0"></div>
+      <p class="frase revelar" style="max-width:28ch">
+        O que você acha é irrelevante. O relevante é o que você faz a partir daquilo que você já sabe.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOCO 07 · RESPIRO · v.3b -->
+  <section class="cena respiro" data-nota="A segunda fala da noite. Repare que ninguém perguntou 'por que você vai pescar?'. A companhia foi imediata e muda.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
+    <div class="interna">
+      <p class="texto">— Nós também vamos com você.</p>
+      <div class="fonte">João 21.3b · NVI</div>
+    </div>
+    <span class="escondido">Mesmo</span>
+  </section>
+
+  <!-- BLOCO 08 · TÓPICO 2 -->
+  <section class="cena" data-nota="Tópico 2. Aqui paga a frase guardada no bloco 04 ('raramente voltamos sozinhos'). Cuidado com o tom: não é acusação, é espelho — todo mundo nesta chamada já foi o Pedro e já foi o discípulo que só foi junto.">
+    <div class="interna">
+      <div class="marcador">Tópico <b>2</b> · João 21.3b</div>
+      <p class="pergunta">Juntos para quê?</p>
+      <p class="corpo">
+        Os outros ouviram o que Jesus tinha determinado para Pedro — e não fizeram nada.
+        Apenas o acompanharam.
+      </p>
+      <div class="rule revelar" style="margin:clamp(26px,3.6vh,50px) 0"></div>
+      <p class="frase revelar" style="max-width:24ch">Ser amigo não é acompanhar. É dar direção.</p>
+      <p class="corpo revelar" style="margin-top:clamp(24px,3.2vh,44px)">
+        Você pode se vangloriar de que é amigo, de que está sempre junto.
+        Mas juntos para quê? Para adiar o chamado — ou para matar o chamado?
+      </p>
+    </div>
+    <div class="versos-pe revelar">
+      <p>“Assim como o ferro afia o ferro, o homem afia o seu companheiro.”<span>Provérbios 27.17 · NVI</span></p>
+    </div>
+  </section>
+
+  <!-- BLOCO 09 · RESPIRO · v.8 -->
+  <section class="cena respiro" data-nota="Ler devagar e segurar no número. A NVI já converte: duzentos côvados = cerca de noventa metros.">
+    <div class="rede" aria-hidden="true"></div>
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i></div><canvas></canvas></div>
+    <div class="interna">
+      <p class="texto" style="font-size:clamp(21px,3.5vw,60px)">
+        Os outros discípulos vieram no barco, arrastando a rede cheia de peixes, pois estavam a cerca de noventa metros da praia.
+      </p>
+      <div class="fonte">João 21.8 · NVI · duzentos côvados</div>
+    </div>
+  </section>
+
+  <!-- BLOCO 10 · TÓPICO 3 -->
+  <section class="cena" data-nota="Tópico 3 — o coração da noite. Dar a medida antes da conclusão: noventa metros é menos que um campo de futebol. Em Lucas 5 o milagre pediu mar adentro; aqui ele acontece à vista da praia. Mesmo Senhor, mesma rede, profundidade nenhuma.">
+    <div class="interna">
+      <div class="marcador">Tópico <b>3</b> · João 21.8</div>
+      <p class="pergunta">Noventa metros</p>
+      <p class="corpo">
+        Duzentos côvados. Menos do que um campo de futebol.
+        Na primeira pesca, Jesus mandou ir para as águas profundas. Nesta, o milagre acontece à vista da areia.
+      </p>
+      <div class="rule revelar" style="margin:clamp(26px,3.6vh,50px) 0"></div>
+      <p class="frase revelar" style="max-width:22ch">A profundidade está onde Jesus está.</p>
+      <ul class="pontos revelar" style="margin-top:clamp(24px,3.2vh,44px)">
+        <li>O lugar não determina o mecanismo do milagre.</li>
+        <li>A profundidade se mede na intimidade com Jesus — não em quanto eu me exponho mar adentro.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BLOCO 11 · CRUZAMENTO LUCAS 5 x JOÃO 21 -->
+  <section class="cena" data-nota="A ponte com a aula 1. Ir linha por linha (→). As duas últimas linhas são o fecho do arco: em Lucas ele pede que Jesus se afaste; em João ele pula do barco para chegar mais rápido. Mesma pessoa, mesmo lago, três anos no meio.">
+    <div class="interna">
+      <div class="marcador">De volta ao começo · <b>Lucas 5</b> e <b>João 21</b></div>
+      <div class="duas">
+        <div class="cab a">Lucas 5</div>
+        <div class="cab b">João 21</div>
+
+        <p class="a revelar">Jesus está na praia e manda o barco para o fundo.</p>
+        <p class="b revelar">Eles estão no mar — e Jesus já está na praia.</p>
+
+        <p class="a revelar">Trabalharam a noite toda e não pegaram nada.</p>
+        <p class="b revelar">Trabalharam a noite toda e não pegaram nada.</p>
+
+        <p class="a revelar">Uma palavra muda a pesca inteira.</p>
+        <p class="b revelar">Uma palavra muda a pesca inteira.</p>
+
+        <p class="a revelar">As redes começavam a rasgar-se. <span class="v">v.6</span></p>
+        <p class="b revelar">A rede não se rompeu. <span class="v">v.11</span></p>
+
+        <p class="a forte revelar">“Afasta-te de mim, Senhor, porque sou um homem pecador!” <span class="v">v.8</span></p>
+        <p class="b forte revelar">Ouviu que era o Senhor e lançou-se ao mar. <span class="v">v.7</span></p>
+
+        <p class="a revelar">Deixaram tudo e o seguiram. <span class="v">v.11</span></p>
+        <p class="b revelar">Ele os chama para comer e serve o pão. <span class="v">v.12-13</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCO 12 · A RESPOSTA À PERGUNTA DA AULA 3 -->
+  <section class="cena muro" data-nota="AQUI paga a dívida do bloco 02. Ler a frase e depois dizer: pescar era a coisa certa — era o que eles faziam melhor — e não era onde deveriam estar. Dá para fazer as coisas de Deus longe de Deus; o nome disso é competência, não é chamado. Não listar as palavras da parede em voz alta, deixar a tela trabalhar.">
+    <div class="parede" aria-hidden="true">
+      <span>pregar</span><span>liderar</span><span>cantar na escala</span><span>organizar</span>
+      <span>servir</span><span>ensinar</span><span>orar em público</span><span>postar o versículo</span>
+      <span>tocar</span><span>abrir a igreja</span><span>discipular</span><span>visitar</span>
+      <span>dirigir o culto</span><span>gravar</span><span>planejar</span><span>estar presente</span>
+      <span>dar o dízimo</span><span>chegar cedo</span><span>arrumar as cadeiras</span><span>fazer a escala</span>
+    </div>
+    <div class="interna">
+      <div class="frente">
+        <p class="frase">…as coisas de Deus, mas não para Deus.</p>
+      </div>
+    </div>
+    <div class="credito" style="position:absolute;left:var(--pad);bottom:calc(var(--pad) + 10px);z-index:3">A pergunta de 24 de agosto</div>
+  </section>
+
+  <!-- BLOCO 13 · MÚSICA -->
+  <section class="cena centro" data-nota="ATENÇÃO: marcar 'compartilhar áudio da guia' no Meet ANTES do play. Última canção da série.">
+    <div class="interna">
+      <div class="marcador">Canção da semana</div>
+      <h2 class="cabeca" style="font-size:clamp(24px,4vw,60px);margin-bottom:clamp(20px,3vh,36px)">Canção do Cristão Medieval · DEVIR</h2>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/z4iRw3TK4Hg"
+                title="Canção do Cristão Medieval — DEVIR"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCO 14 · CAÇA-PALAVRAS · O BANCO -->
+  <section class="cena" data-nota="Momento do caça-palavras. Perguntar ANTES de mostrar: quem anotou? o que vocês montaram? Deixar a galera falar as frases que montou — é a melhor parte. Só então revelar (→) que uma por aula era verdadeira.">
+    <div class="interna">
+      <div class="marcador">Caça-palavras · quatro aulas, <b>vinte</b> palavras</div>
+      <div class="banco">
+        <b>10 de agosto</b>
+        <span>Ainda</span><span>E descobri</span><span>Sozinho</span><span>Quase</span><span>Talvez</span>
+        <b>17 de agosto</b>
+        <span>Agora</span><span>Nada</span><span>Nunca</span><span>Enfim</span><span>Sempre</span>
+        <b>24 de agosto</b>
+        <span>Depois</span><span>Apenas</span><span>Que não perdi</span><span>Ontem</span><span>Quando</span>
+        <b>31 de agosto</b>
+        <span>Hoje</span><span>Comigo</span><span>Eu deixei tudo</span><span>Então</span><span>Mesmo</span>
+      </div>
+      <div class="rule revelar" style="margin:clamp(26px,3.6vh,50px) 0"></div>
+      <p class="corpo revelar">
+        Uma por aula era verdadeira. As outras quatro eram isca.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOCO 15 · CAÇA-PALAVRAS · AS TENTATIVAS -->
+  <section class="cena" data-nota="Uma por vez (→). Comentar cada uma em uma frase: 1) a versão da solidão — deixei tudo e fiquei só; 2) a versão do orgulho — olha o que eu consegui abrir mão; 3) a versão do desânimo — larguei tudo e não veio nada; 4) a versão do João 21 — já deixei, mas hoje voltei pro barco. A quinta corrige todas. Depois dela: anunciar quem chegou mais perto e entregar o prêmio.">
+    <div class="interna">
+      <div class="marcador">O que dava para montar</div>
+      <p class="tentativa revelar">Talvez eu deixei tudo sozinho.</p>
+      <p class="tentativa revelar">Agora, enfim, eu deixei tudo.</p>
+      <p class="tentativa revelar">Eu deixei tudo e descobri nada.</p>
+      <p class="tentativa revelar">Ontem eu deixei tudo. Hoje, nada.</p>
+      <p class="tentativa real revelar">Eu deixei tudo e descobri que não perdi nada.</p>
+    </div>
+  </section>
+
+  <!-- BLOCO 16 · FILIPENSES 3 -->
+  <section class="cena respiro" data-nota="Texto guardado desde o começo da série — não apareceu em nenhuma das três aulas anteriores. Paulo não está dizendo que perdeu e aguentou. Está dizendo que refez a conta (aula 2) e o saldo mudou de lado.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
+    <div class="interna">
+      <p class="texto" style="font-size:clamp(19px,3.1vw,50px)">
+        Mas o que para mim era lucro, passei a considerar perda, por causa de Cristo. Mais do que isso, considero tudo como perda, comparado com a suprema grandeza do conhecimento de Cristo Jesus, meu Senhor.
+      </p>
+      <div class="fonte">Filipenses 3.7-8 · NVI</div>
+    </div>
+  </section>
+
+  <!-- BLOCO 17 · LUCAS 14.33 · O TÍTULO DA SÉRIE -->
+  <section class="cena impacto" data-nota="O último texto guardado. Dizer o versículo, PARAR, e só então trazer a linha final (→) — que é o próprio nome da série, fechando as quatro segundas.">
+    <div class="fogo"><div class="heat"><i></i><i></i><i></i><i></i></div><canvas></canvas><div class="brasa-glow"></div></div>
+    <div class="interna">
+      <p class="frase" style="max-width:26ch">
+        Qualquer de vocês que não renunciar a tudo o que possui não pode ser meu discípulo.
+      </p>
+      <span class="ref">Lucas 14.33 · NVI</span>
+      <div class="rule revelar" style="margin:clamp(28px,3.8vh,52px) auto"></div>
+      <p class="pergunta revelar" style="margin-bottom:0">Até que nada mais importe.</p>
+    </div>
+  </section>
+
+  <!-- BLOCO 18 · O DESAFIO QUE NÃO TEM SEMANA QUE VEM -->
+  <section class="cena centro" data-nota="Fechamento. Não há próxima segunda — então o desafio não tem prestação de contas na semana seguinte, e é justamente esse o ponto. Orar em cima disso e encerrar. Agradecer as quatro segundas.">
+    <div class="interna">
+      <div class="marcador">O desafio</div>
+      <div class="caixa" style="margin:0 auto">
+        <p class="corpo" style="max-width:100%">
+          Escreva num papel o nome da coisa que você ainda está segurando —
+          a que você levaria para o barco se Jesus morresse dentro de você amanhã.
+        </p>
+        <p class="corpo revelar" style="max-width:100%;margin-top:clamp(18px,2.4vh,32px)">
+          Não me conte qual é. Não conte para o grupo. Conte para Ele.
+        </p>
+      </div>
+      <p class="corpo revelar" style="margin:clamp(30px,4vh,56px) auto 0;color:rgba(217,170,116,.55)">
+        Não tem segunda que vem. E é exatamente esse o teste.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<script src="fogo.js"></script>
+<script src="apresentar.js"></script>
+</body>
+</html>
